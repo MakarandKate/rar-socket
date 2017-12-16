@@ -1,0 +1,23 @@
+{
+  "name": "rar-socket",
+  "version": "0.1.0",
+  "description": "sockets for rar",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MakarandKate/rar-socket.git"
+  },
+  "author": "Makarand",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MakarandKate/rar-socket/issues"
+  },
+  "homepage": "https://github.com/MakarandKate/rar-socket#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "socket.io": "^2.0.4"
+  }
+}
