@@ -30,7 +30,7 @@ io.on('connection', function(socket){
         };
         var onlineLeads=[];
         for(lead in activeLeads){
-          onlineLeads.push(activeLeads[lead].docNo);
+          onlineLeads.push(activeLeads[lead].data);
         }
         socket.emit('onlineLeads',onlineLeads);
     }
