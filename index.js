@@ -13,11 +13,14 @@ io.on('connection', function(socket){
     if(socket.handshake.query.userType=="user"){
         activeLeads[socket.handshake.query.sessionId]={
           socket:socket,
-          timeStamp:new Date().getTime(),
-          docNo:socket.handshake.query.docNo
+          data:{
+            timeStamp:new Date().getTime(),
+            docNo:socket.handshake.query.docNo,
+            stage:socket.handshake.query.stage
+          }
         };
         for(admin in activeAdmin){
-          activeAdmin[admin].socket.emit('newLead',{docNo:socket.handshake.query.docNo});
+          activeAdmin[admin].socket.emit('newLead',activeLeads[socket.handshake.query.sessionId].data);
         }
 
     }else if(socket.handshake.query.userType=="admin"){
