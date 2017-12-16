@@ -25,6 +25,11 @@ io.on('connection', function(socket){
           socket:socket,
           timeStamp:new Date().getTime()
         };
+        var onlineLeads=[];
+        for(lead in activeLeads){
+          onlineLeads.push(activeLeads[lead].docNo);
+        }
+        socket.emit('onlineLeads',onlineLeads);
     }
 	}
   /*
