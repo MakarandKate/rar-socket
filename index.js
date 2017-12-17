@@ -42,9 +42,11 @@ io.on('connection', function(socket){
       if(socket.handshake.query.userType){
         if(socket.handshake.query.userType=="user"){
           delete activeLeads[socket.handshake.query.sessionId];
-          for(admin in activeAdmin){
-            activeAdmin[admin].socket.emit('leftLead',{docNo:socket.handshake.query.docNo});
-          }      
+          setTimeout(function(){
+            for(admin in activeAdmin){
+              activeAdmin[admin].socket.emit('leftLead',{docNo:socket.handshake.query.docNo});
+            }
+          },2*60*1000);  
         }else if(socket.handshake.query.userType=="admin"){
           delete activeAdmin[socket.handshake.query.sessionId];      
         }
