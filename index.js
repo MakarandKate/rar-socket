@@ -25,6 +25,7 @@ io.on('connection', function(socket){
 
     }else if(socket.handshake.query.userType=="admin"){
         activeAdmin[socket.handshake.query.sessionId]={
+          adminId:socket.handshake.query.adminId,
           socket:socket,
           timeStamp:new Date().getTime()
         };
@@ -52,6 +53,12 @@ io.on('connection', function(socket){
         }
       }
   	});
+
+    socket.on('prospectClaim',function(obj){
+      for(admin in activeAdmin){
+          activeAdmin[admin].socket.emit('leadClaimed',obj);
+        }
+    });
 
 });
 
