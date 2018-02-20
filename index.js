@@ -55,6 +55,8 @@ io.on('connection', function(socket){
   	});
 
     socket.on('prospectClaim',function(obj){
+      console.log("prospectClaim");
+      console.log(obj);
       for(admin in activeAdmin){
           activeAdmin[admin].socket.emit('leadClaimed',obj);
         }
